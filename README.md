@@ -1,2 +1,2 @@
-# containers
+# Containers
 Bioinformatics container proving ground
