@@ -34,7 +34,7 @@ RUN yum -y install \
          java-1.8.0-openjdk \
          make
 
-RUN wget https://github.com/samtools/samtools/releases/download/$SAMTOOLS_VERSION/$SAMTOOLS_SOURCE -O /opt/$SAMTOOLS_SOURCE \
+RUN wget "https://github.com/samtools/samtools/releases/download/$SAMTOOLS_VERSION/$SAMTOOLS_SOURCE" -O /opt/$SAMTOOLS_SOURCE \
     && tar -xvf /opt/$SAMTOOLS_SOURCE -C /opt \
     && cd /opt/samtools-$SAMTOOLS_VERSION \
     && ./configure \
@@ -42,7 +42,7 @@ RUN wget https://github.com/samtools/samtools/releases/download/$SAMTOOLS_VERSIO
     && ln -s /opt/samtools-$SAMTOOLS_VERSION/$SAMTOOLS_BIN $SAMTOOLS_DEST \
     && rm /opt/$SAMTOOLS_SOURCE
 
-RUN wget https://github.com/mummer4/mummer/releases/download/v$MUMMER_VERSION/$MUMMER_SOURCE -O /opt/$MUMMER_SOURCE \
+RUN wget "https://github.com/mummer4/mummer/releases/download/v$MUMMER_VERSION/$MUMMER_SOURCE" -O /opt/$MUMMER_SOURCE \
     && tar -xvf /opt/$MUMMER_SOURCE -C /opt \
     && cd /opt/mummer-$MUMMER_VERSION \
     && ./configure \
@@ -60,11 +60,11 @@ RUN wget "https://sourceforge.net/projects/smalt/files/smalt-$SMALT_VERSION-stat
     make && \
     make install
 
-RUN wget https://github.com/refresh-bio/KMC/releases/download/v$KMC_VERSION/KMC3.linux.tar.gz && \
+RUN wget "https://github.com/refresh-bio/KMC/releases/download/v$KMC_VERSION/KMC3.linux.tar.gz" && \
     tar -xvzf KMC3.linux.tar.gz && \
     mv kmc* /usr/local/bin
 
-RUN wget http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-$TRIMMOMATIC_VERSION.zip && \
+RUN wget "http://www.usadellab.org/cms/uploads/supplementary/Trimmomatic/Trimmomatic-$TRIMMOMATIC_VERSION.zip" && \
     unzip Trimmomatic-$TRIMMOMATIC_VERSION.zip -d /usr/local/bin/ && \
     ln -s /usr/local/bin/Trimmomatic-$TRIMMOMATIC_VERSION/trimmomatic-$TRIMMOMATIC_VERSION.jar /usr/local/bin/trimmomatic.jar
 
