@@ -12,7 +12,7 @@ RUN yum -y install \
          ncurses-devel \
          wget \
          xz-devel \
-         zlib-devel \
+         zlib-devel
 
 
 ENV SAMTOOLS_SOURCE="samtools-1.7.tar.bz2" \

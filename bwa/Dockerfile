@@ -2,13 +2,12 @@ FROM centos:latest
 
 RUN yum -y update
 
-RUN yum -y install 
+RUN yum -y install \
 	bzip2 \
 	gcc \
 	make \
 	wget \
 	zlib-devel 
-
 
 ENV BWA_SOURCE="bwa-0.7.15.tar.bz2" \
     BWA_VERSION="0.7.15" \

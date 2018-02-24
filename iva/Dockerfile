@@ -27,6 +27,7 @@ RUN yum -y install \
          zlib-devel \
          gcc \
          gcc-c++ \
+         glibc-static \
          libzip-devel \
          libcurl-devel \
          perl \
@@ -45,14 +46,11 @@ RUN wget "https://github.com/samtools/samtools/releases/download/$SAMTOOLS_VERSI
 RUN wget "https://github.com/mummer4/mummer/releases/download/v$MUMMER_VERSION/$MUMMER_SOURCE" -O /opt/$MUMMER_SOURCE \
     && tar -xvf /opt/$MUMMER_SOURCE -C /opt \
     && cd /opt/mummer-$MUMMER_VERSION \
-    && ./configure \
+    && ./configure --prefix=/usr/local --enable-static \
     && make \
+    && make install \
     && rm /opt/$MUMMER_SOURCE
     
-RUN for i in $(find /opt/mummer-$MUMMER_VERSION/ -executable -type f); \
-    do ln -s $i $MUMMER_DEST; \
-    done
-
 RUN wget "https://sourceforge.net/projects/smalt/files/smalt-$SMALT_VERSION-static.tar.gz" && \
     tar -xvzf smalt-$SMALT_VERSION-static.tar.gz && \
     cd smalt-$SMALT_VERSION && \
